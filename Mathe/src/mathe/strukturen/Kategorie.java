@@ -1,8 +1,10 @@
 package mathe.strukturen;
 
-public interface Kategorie<OBJ, MOR> {
-	Menge<OBJ> objecte();
+import java.io.Serializable;
 
-	Menge<MOR> morphismen(OBJ from, OBJ to);
+public interface Kategorie<OBJ  extends Serializable, MOR  extends Serializable> {
+    Menge<OBJ> objecte();
+
+    Menge<MOR> morphismen(OBJ from, OBJ to);
 
 }

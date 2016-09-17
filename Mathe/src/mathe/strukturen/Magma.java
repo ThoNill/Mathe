@@ -1,15 +1,17 @@
 package mathe.strukturen;
 
-public interface Magma<K> extends Menge<K> {
+import java.io.Serializable;
 
-	K op(K l, K r);
+public interface Magma<K extends Serializable> extends Menge<K> {
 
-	boolean hatLQuotient(K r, K re);
+    K op(K l, K r);
 
-	boolean hatRQuotient(K r, K le);
+    boolean hatLQuotient(K r, K re);
 
-	K getLQuotient(K r, K re);
+    boolean hatRQuotient(K r, K le);
 
-	K getRQuotient(K r, K li);
+    K getLQuotient(K r, K re);
+
+    K getRQuotient(K r, K li);
 
 }

@@ -1,10 +1,12 @@
 package mathe.strukturen;
 
-public interface Körper<K> extends Ring<K> {
+import java.io.Serializable;
 
-	@Override
-	default boolean hatInverse(K value) {
-		return !istGleich(getNull(), value);
-	}
+public interface Körper<K  extends Serializable> extends Ring<K> {
+
+    @Override
+    default boolean hatInverse(K value) {
+        return !istGleich(getNull(), value);
+    }
 
 }

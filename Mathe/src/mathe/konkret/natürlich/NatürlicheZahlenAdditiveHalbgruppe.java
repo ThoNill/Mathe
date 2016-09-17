@@ -6,37 +6,37 @@ import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.KommutativesMagma;
 
 public class NatürlicheZahlenAdditiveHalbgruppe extends NatürlicheZahlen
-		implements Halbgruppe<BigInteger>, KommutativesMagma<BigInteger> {
+        implements Halbgruppe<BigInteger>, KommutativesMagma<BigInteger> {
 
-	public static NatürlicheZahlenAdditiveHalbgruppe ADDITIV = new NatürlicheZahlenAdditiveHalbgruppe();
+    public static final NatürlicheZahlenAdditiveHalbgruppe ADDITIV = new NatürlicheZahlenAdditiveHalbgruppe();
 
-	private NatürlicheZahlenAdditiveHalbgruppe() {
-		super();
-	}
+    private NatürlicheZahlenAdditiveHalbgruppe() {
+        super();
+    }
 
-	@Override
-	public BigInteger getEins() {
-		return BigInteger.ZERO;
-	}
+    @Override
+    public BigInteger getEins() {
+        return BigInteger.ZERO;
+    }
 
-	@Override
-	public BigInteger op(BigInteger l, BigInteger r) {
-		return l.add(r);
-	}
+    @Override
+    public BigInteger op(BigInteger l, BigInteger r) {
+        return l.add(r);
+    }
 
-	@Override
-	public BigInteger getQuotient(BigInteger r, BigInteger re) {
-		if (hatQuotient(r, re)) {
-			return r.subtract(re);
-		} else {
-			throw new RuntimeException("kann " + re + " nicht von " + r
-					+ " abziehen");
-		}
-	}
+    @Override
+    public BigInteger getQuotient(BigInteger r, BigInteger re) {
+        if (hatQuotient(r, re)) {
+            return r.subtract(re);
+        } else {
+            throw new RuntimeException("kann " + re + " nicht von " + r
+                    + " abziehen");
+        }
+    }
 
-	@Override
-	public boolean hatQuotient(BigInteger r, BigInteger re) {
-		return r.compareTo(re) >= 0;
-	}
+    @Override
+    public boolean hatQuotient(BigInteger r, BigInteger re) {
+        return r.compareTo(re) >= 0;
+    }
 
 }

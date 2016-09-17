@@ -1,5 +1,7 @@
 package mathe.strukturen;
 
-public interface Halbgruppe<K> extends MagmaMitEins<K> {
+import java.io.Serializable;
+
+public interface Halbgruppe<K  extends Serializable> extends MagmaMitEins<K> {
 
 }

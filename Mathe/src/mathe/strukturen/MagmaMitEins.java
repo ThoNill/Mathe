@@ -1,22 +1,24 @@
 package mathe.strukturen;
 
-public interface MagmaMitEins<K> extends Magma<K> {
-	K getEins();
+import java.io.Serializable;
 
-	default boolean hatLInverse(K e) {
-		return hatLQuotient(getEins(), e);
-	}
+public interface MagmaMitEins<K  extends Serializable> extends Magma<K> {
+    K getEins();
 
-	default boolean hatRInverse(K e) {
-		return hatRQuotient(getEins(), e);
-	}
+    default boolean hatLInverse(K e) {
+        return hatLQuotient(getEins(), e);
+    }
 
-	default K getLInverse(K e) {
-		return getLQuotient(getEins(), e);
-	}
+    default boolean hatRInverse(K e) {
+        return hatRQuotient(getEins(), e);
+    }
 
-	default K getRInverse(K e) {
-		return getRQuotient(getEins(), e);
-	}
+    default K getLInverse(K e) {
+        return getLQuotient(getEins(), e);
+    }
+
+    default K getRInverse(K e) {
+        return getRQuotient(getEins(), e);
+    }
 
 }

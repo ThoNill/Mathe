@@ -7,25 +7,24 @@ import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.Ring;
 
 public class GanzeZahlenRing extends GanzeZahlen implements Ring<BigInteger> {
-	public static GanzeZahlenRing RING = new GanzeZahlenRing();
+    public static final GanzeZahlenRing RING = new GanzeZahlenRing();
 
-	private GanzeZahlenRing() {
-		super();
-	}
+    private GanzeZahlenRing() {
+        super();
+    }
 
-	@Override
-	public Halbgruppe<BigInteger> multStruktur() {
-		return GanzeZahlenMultiplikativeHalbgruppe.MULTIPLIKATIV;
-	}
+    @Override
+    public Halbgruppe<BigInteger> multStruktur() {
+        return GanzeZahlenMultiplikativeHalbgruppe.MULTIPLIKATIV;
+    }
 
-	@Override
-	public Gruppe<BigInteger> addStruktur() {
-		return GanzeZahlenAdditiveGruppe.ADDITIV;
-	}
+    @Override
+    public Gruppe<BigInteger> addStruktur() {
+        return GanzeZahlenAdditiveGruppe.ADDITIV;
+    }
 
-	
-	public BigInteger ggt(BigInteger a, BigInteger b) {
-		return a.gcd(b);
-	}
+    public BigInteger ggt(BigInteger a, BigInteger b) {
+        return a.gcd(b);
+    }
 
 }

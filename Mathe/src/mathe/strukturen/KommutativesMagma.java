@@ -1,29 +1,31 @@
 package mathe.strukturen;
 
-public interface KommutativesMagma<K> extends Magma<K> {
+import java.io.Serializable;
 
-	boolean hatQuotient(K r, K re);
+public interface KommutativesMagma<K  extends Serializable> extends Magma<K> {
 
-	K getQuotient(K r, K re);
+    boolean hatQuotient(K r, K re);
 
-	@Override
-	default K getLQuotient(K r, K re) {
-		return getQuotient(r, re);
-	}
+    K getQuotient(K r, K re);
 
-	@Override
-	default K getRQuotient(K r, K li) {
-		return getQuotient(r, li);
-	}
+    @Override
+    default K getLQuotient(K r, K re) {
+        return getQuotient(r, re);
+    }
 
-	@Override
-	default boolean hatLQuotient(K r, K re) {
-		return hatQuotient(r, re);
-	}
+    @Override
+    default K getRQuotient(K r, K li) {
+        return getQuotient(r, li);
+    }
 
-	@Override
-	default boolean hatRQuotient(K r, K li) {
-		return hatQuotient(r, li);
-	}
+    @Override
+    default boolean hatLQuotient(K r, K re) {
+        return hatQuotient(r, re);
+    }
+
+    @Override
+    default boolean hatRQuotient(K r, K li) {
+        return hatQuotient(r, li);
+    }
 
 }

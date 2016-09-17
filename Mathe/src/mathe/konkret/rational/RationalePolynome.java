@@ -1,9 +1,12 @@
 package mathe.konkret.rational;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.BitSet;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -20,77 +23,80 @@ import mathe.konkret.polynome.MonomHalbgruppe;
 import mathe.konkret.polynome.Polynom;
 import mathe.konkret.polynome.Polynomring;
 
-public class RationalePolynome extends Polynomring<RationaleZahl> implements ANTLRErrorListener{
-	private MonomHalbgruppe monomBereich;
-	private Vector<String> parserErrors;
-	
-	public RationalePolynome(MonomHalbgruppe monomBereich) {
-		super(RationaleZahlen.Q, monomBereich);
-		this.monomBereich = monomBereich;
-		parserErrors = new Vector<>();
-	}
+public class RationalePolynome extends Polynomring<RationaleZahl> implements
+        ANTLRErrorListener {
+    public static final Logger LOG = Logger.getLogger(RationalePolynome.class.getName());
 
-	@Override
-	public Polynom<RationaleZahl> getElement(String text) {
-		try {
-			ByteArrayInputStream in = new ByteArrayInputStream(text.getBytes());
-			ANTLRInputStream input;
-			input = new ANTLRInputStream(in);
-			PolynomReaderLexer lexer = new PolynomReaderLexer(input);
-			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
+    private MonomHalbgruppe monomBereich;
+    private Vector<String> parserErrors;
 
-			PolynomReaderParser parser = new PolynomReaderParser(tokenStream);
-		
-			parser.addErrorListener(this);
+    public RationalePolynome(MonomHalbgruppe monomBereich) {
+        super(RationaleZahlen.Q, monomBereich);
+        this.monomBereich = monomBereich;
+        parserErrors = new Vector<>();
+    }
 
-			PolynomReadListener listener = new PolynomReadListener(monomBereich);
+    @Override
+    public Polynom<RationaleZahl> getElement(String text) {
+        try {
 
-			parser.addParseListener(listener);
+            ByteArrayInputStream in = new ByteArrayInputStream(text.getBytes());
+            ANTLRInputStream input;
+            input = new ANTLRInputStream(in);
+            PolynomReaderLexer lexer = new PolynomReaderLexer(input);
+            CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 
-			parser.polynom();
-			
+            PolynomReaderParser parser = new PolynomReaderParser(tokenStream);
 
-			return listener.getPolynom();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return null;
-	}
+            parser.addErrorListener(this);
 
-	
-	public List<String> getErrors() {
-		return parserErrors;
-	}
-	
-	public void clearErrors() {
-		parserErrors.removeAllElements();
-	}
+            PolynomReadListener listener = new PolynomReadListener(monomBereich);
 
-	@Override
-	public void syntaxError(Recognizer<?, ?> recognizer,
-			Object offendingSymbol, int line, int charPositionInLine,
-			String msg, RecognitionException e) {
-		parserErrors.add("Fehler in Position " + charPositionInLine );
-	}
+            parser.addParseListener(listener);
 
-	@Override
-	public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex,
-			int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
-		parserErrors.add("Fehler");
-		
-	}
+            parser.polynom();
 
-	@Override
-	public void reportAttemptingFullContext(Parser recognizer, DFA dfa,
-			int startIndex, int stopIndex, BitSet conflictingAlts,
-			ATNConfigSet configs) {
-		parserErrors.add("Fehler");
-	}
+            return listener.getPolynom();
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,"Ausnahme im getElement ",e);
+        }
 
-	@Override
-	public void reportContextSensitivity(Parser recognizer, DFA dfa,
-			int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
-		parserErrors.add("Fehler");
-	}
+        return null;
+    }
+
+    public List<String> getErrors() {
+        return parserErrors;
+    }
+
+    public void clearErrors() {
+        parserErrors.removeAllElements();
+    }
+
+    @Override
+    public void syntaxError(Recognizer<?, ?> recognizer,
+            Object offendingSymbol, int line, int charPositionInLine,
+            String msg, RecognitionException e) {
+        parserErrors.add("Fehler in Position " + charPositionInLine);
+    }
+
+    @Override
+    public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex,
+            int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
+        parserErrors.add("Fehler");
+
+    }
+
+    @Override
+    public void reportAttemptingFullContext(Parser recognizer, DFA dfa,
+            int startIndex, int stopIndex, BitSet conflictingAlts,
+            ATNConfigSet configs) {
+        parserErrors.add("Fehler");
+    }
+
+    @Override
+    public void reportContextSensitivity(Parser recognizer, DFA dfa,
+            int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
+        parserErrors.add("Fehler");
+    }
 
 }

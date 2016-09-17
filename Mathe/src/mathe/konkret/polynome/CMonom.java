@@ -1,52 +1,57 @@
 package mathe.konkret.polynome;
 
-public class CMonom<C> {
-	C a; // Koeffizient;
-	Monom monom;
+import java.io.Serializable;
 
-	public CMonom(C a, Monom m) {
-		this.a = a;
-		this.monom = m;
-	}
+public class CMonom<C  extends Serializable> implements Serializable{
+  
+    private static final long serialVersionUID = -7336686871223712490L;
+    
+    C a; // Koeffizient;
+    Monom monom;
 
-	public CMonom(C a, int count, int... exp) {
-		this(a, new Monom(count, exp));
-	}
+    public CMonom(C a, Monom m) {
+        this.a = a;
+        this.monom = m;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((a == null) ? 0 : a.hashCode());
-		result = prime * result + ((monom == null) ? 0 : monom.hashCode());
-		return result;
-	}
+    public CMonom(C a, int count, int... exp) {
+        this(a, new Monom(count, exp));
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CMonom<C> other = (CMonom<C>) obj;
-		if (a == null) {
-			if (other.a != null)
-				return false;
-		} else if (!a.equals(other.a))
-			return false;
-		if (monom == null) {
-			if (other.monom != null)
-				return false;
-		} else if (!monom.equals(other.monom))
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((a == null) ? 0 : a.hashCode());
+        result = prime * result + ((monom == null) ? 0 : monom.hashCode());
+        return result;
+    }
 
-	@Override
-	public String toString() {
-		return "CMonom [a=" + a + ", monom=" + monom + "]";
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CMonom<C> other = (CMonom<C>) obj;
+        if (a == null) {
+            if (other.a != null)
+                return false;
+        } else if (!a.equals(other.a))
+            return false;
+        if (monom == null) {
+            if (other.monom != null)
+                return false;
+        } else if (!monom.equals(other.monom))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "CMonom [a=" + a + ", monom=" + monom + "]";
+    }
 
 }
