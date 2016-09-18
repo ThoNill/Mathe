@@ -6,6 +6,8 @@ import java.util.Iterator;
 import mathe.strukturen.Menge;
 
 public class GanzeZahlen implements Menge<BigInteger> {
+  
+    private static final long serialVersionUID = -2895807888359644896L;
     public static final GanzeZahlen MENGE = new GanzeZahlen();
 
     GanzeZahlen() {

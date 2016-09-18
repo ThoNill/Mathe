@@ -8,6 +8,7 @@ import mathe.strukturen.KommutativesMagma;
 public class GanzeZahlenMultiplikativeHalbgruppe extends GanzeZahlen implements
         Halbgruppe<BigInteger>, KommutativesMagma<BigInteger> {
 
+    private static final long serialVersionUID = 9130111955782985252L;
     public static final GanzeZahlenMultiplikativeHalbgruppe MULTIPLIKATIV = new GanzeZahlenMultiplikativeHalbgruppe();
 
     private GanzeZahlenMultiplikativeHalbgruppe() {

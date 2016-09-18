@@ -3,6 +3,8 @@ package mathe.grothendieck;
 import java.io.Serializable;
 
 public class GrothendieckPaar<K extends Serializable> implements Serializable {
+  
+    private static final long serialVersionUID = -8622727852787341703L;
     public K li;
     public K re;
 
@@ -34,7 +36,8 @@ public class GrothendieckPaar<K extends Serializable> implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        GrothendieckPaar other = (GrothendieckPaar) obj;
+        @SuppressWarnings("unchecked")
+        GrothendieckPaar<K> other = (GrothendieckPaar<K>) obj;
         if (li == null) {
             if (other.li != null)
                 return false;

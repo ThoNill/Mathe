@@ -7,6 +7,7 @@ import mathe.strukturen.Gruppe;
 public class GanzeZahlenAdditiveGruppe extends GanzeZahlen implements
         Gruppe<BigInteger> {
 
+    private static final long serialVersionUID = 370741736645921073L;
     public static final GanzeZahlenAdditiveGruppe ADDITIV = new GanzeZahlenAdditiveGruppe();
 
     private GanzeZahlenAdditiveGruppe() {

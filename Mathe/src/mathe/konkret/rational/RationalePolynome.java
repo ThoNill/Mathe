@@ -26,6 +26,11 @@ import polynom.PolynomReaderParser;
 
 public class RationalePolynome extends Polynomring<RationaleZahl> implements
         ANTLRErrorListener {
+   
+    private static final long serialVersionUID = 1245028469516612006L;
+
+    private static final String FEHLER = "Fehler";
+
     private static final Logger LOG = Logger.getLogger(RationalePolynome.class
             .getName());
 
@@ -84,7 +89,7 @@ public class RationalePolynome extends Polynomring<RationaleZahl> implements
     @Override
     public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex,
             int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
-        parserErrors.add("Fehler");
+        parserErrors.add(FEHLER);
 
     }
 
@@ -92,13 +97,13 @@ public class RationalePolynome extends Polynomring<RationaleZahl> implements
     public void reportAttemptingFullContext(Parser recognizer, DFA dfa,
             int startIndex, int stopIndex, BitSet conflictingAlts,
             ATNConfigSet configs) {
-        parserErrors.add("Fehler");
+        parserErrors.add(FEHLER);
     }
 
     @Override
     public void reportContextSensitivity(Parser recognizer, DFA dfa,
             int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
-        parserErrors.add("Fehler");
+        parserErrors.add(FEHLER);
     }
 
 }

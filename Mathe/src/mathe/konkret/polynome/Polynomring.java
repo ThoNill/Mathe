@@ -9,6 +9,9 @@ import mathe.strukturen.Ring;
 
 public class Polynomring<C extends Serializable> extends Polynome<C> implements
         Ring<Polynom<C>> {
+  
+    private static final long serialVersionUID = -2039890269779280253L;
+
     private static final Logger LOG = Logger.getLogger(Polynomring.class
             .getName());
 

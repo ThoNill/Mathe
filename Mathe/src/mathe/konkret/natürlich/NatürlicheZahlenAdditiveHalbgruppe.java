@@ -8,6 +8,7 @@ import mathe.strukturen.KommutativesMagma;
 public class NatürlicheZahlenAdditiveHalbgruppe extends NatürlicheZahlen
         implements Halbgruppe<BigInteger>, KommutativesMagma<BigInteger> {
 
+    private static final long serialVersionUID = -7536739093752899618L;
     public static final NatürlicheZahlenAdditiveHalbgruppe ADDITIV = new NatürlicheZahlenAdditiveHalbgruppe();
 
     private NatürlicheZahlenAdditiveHalbgruppe() {

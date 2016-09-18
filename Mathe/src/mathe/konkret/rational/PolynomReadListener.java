@@ -1,17 +1,15 @@
 package mathe.konkret.rational;
 
 import java.math.BigInteger;
+
 import java.util.List;
 
 import mathe.konkret.polynome.CMonom;
 import mathe.konkret.polynome.Monom;
 import mathe.konkret.polynome.MonomHalbgruppe;
 import mathe.konkret.polynome.Polynom;
-
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
-
 import polynom.PolynomReaderBaseListener;
 import polynom.PolynomReaderParser;
 import polynom.PolynomReaderParser.KopfContext;
@@ -116,12 +114,7 @@ public class PolynomReadListener extends PolynomReaderBaseListener {
 
     }
 
-    private String getText(ParserRuleContext vorz) {
-        if (vorz != null) {
-            return vorz.getText();
-        }
-        return "";
-    }
+  
 
     private Monom bestimmeDasMonom(PolynomReaderParser.CmonomContext ctx) {
         int[] exponenten = new int[monomMenge.getSize()];

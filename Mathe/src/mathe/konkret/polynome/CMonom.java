@@ -35,6 +35,7 @@ public class CMonom<C extends Serializable> implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
+        @SuppressWarnings("unchecked")
         CMonom<C> other = (CMonom<C>) obj;
         if (a == null) {
             if (other.a != null)

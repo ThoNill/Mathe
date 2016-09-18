@@ -10,14 +10,15 @@ import mathe.strukturen.KommutativesMagma;
 
 public class MonomHalbgruppe implements Halbgruppe<Monom>,
         KommutativesMagma<Monom>, Serializable {
-
     private static final long serialVersionUID = -538130000480045952L;
 
-    static public final MonomHalbgruppe P2Z = new MonomHalbgruppe("p", "q",
+    public static final MonomHalbgruppe P2Z = new MonomHalbgruppe("p", "q",
             "r", "s", "t", "u", "v", "w", "x", "y", "z");
-
+    
     String[] bezeichner;
+
     private final Monom eins;
+
 
     public MonomHalbgruppe(String... bezeichner) {
         this.bezeichner = bezeichner;

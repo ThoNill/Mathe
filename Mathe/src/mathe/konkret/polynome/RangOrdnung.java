@@ -2,6 +2,8 @@ package mathe.konkret.polynome;
 
 public class RangOrdnung extends LexOrdnung {
 
+    private static final long serialVersionUID = 4523184956305513523L;
+
     @Override
     public int compare(Monom o1, Monom o2) {
         if (o1.exponenten.length != o2.exponenten.length) {

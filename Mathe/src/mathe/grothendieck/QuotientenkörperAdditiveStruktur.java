@@ -8,6 +8,8 @@ import mathe.strukturen.Ring;
 
 public class QuotientenkörperAdditiveStruktur<R extends Serializable, GP extends GrothendieckPaar<R>>
         implements Gruppe<GP> {
+  
+    private static final long serialVersionUID = 3296456059361284296L;
     Ring<R> ring;
     GrothendieckPaarMenge<R, GP> paarMenge;
 

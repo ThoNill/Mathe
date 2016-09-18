@@ -8,6 +8,8 @@ import mathe.strukturen.Halbgruppe;
 
 public class GrothendieckGruppe<H extends Serializable, GP extends GrothendieckPaar<H>>
         implements Gruppe<GP>, GrothendieckPaarMenge<H, GP> {
+   
+    private static final long serialVersionUID = 5306610866508554478L;
     Halbgruppe<H> halbgruppe;
     GrothendieckPaarMenge<H, GP> paarMenge;
 

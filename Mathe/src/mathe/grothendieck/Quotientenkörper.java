@@ -10,6 +10,8 @@ import mathe.strukturen.Ring;
 
 public class Quotientenkörper<R extends Serializable, GP extends GrothendieckPaar<R>>
         implements Körper<GP>, GrothendieckPaarMenge<R, GP> {
+    
+    private static final long serialVersionUID = -5673088220642935443L;
     Ring<R> ring;
     GrothendieckGruppe<R, GP> multStruktur = null;
     QuotientenkörperAdditiveStruktur<R, GP> additiveStruktur;
@@ -56,6 +58,7 @@ public class Quotientenkörper<R extends Serializable, GP extends GrothendieckPaa
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public GP neuesPaar(R li, R re) {
         return (GP) new GrothendieckPaar<R>(li, re);

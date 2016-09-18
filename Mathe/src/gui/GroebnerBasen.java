@@ -118,7 +118,7 @@ public class GroebnerBasen extends JFrame {
             }
 
             if (fehlerFrei) {
-                GröbnerBasisAlgo<RationaleZahl> gb = new GröbnerBasisAlgo(rp);
+                GröbnerBasisAlgo<RationaleZahl> gb = new GröbnerBasisAlgo<>(rp);
                 List<Polynom<RationaleZahl>> gröbnerBasis = gb.gröbner(basis);
                 StringBuilder builder = new StringBuilder();
                 for (Polynom<RationaleZahl> p : gröbnerBasis) {

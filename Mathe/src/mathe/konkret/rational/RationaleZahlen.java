@@ -7,6 +7,8 @@ import mathe.konkret.ganz.GanzeZahlenRing;
 
 public class RationaleZahlen extends
         Quotientenkörper<BigInteger, RationaleZahl> {
+   
+    private static final long serialVersionUID = 2511090182054801282L;
     public static final RationaleZahlen Q = new RationaleZahlen();
 
     private RationaleZahlen() {

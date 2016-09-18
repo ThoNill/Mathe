@@ -68,7 +68,8 @@ public class Polynom<C extends Serializable> implements Iterable<CMonom<C>>,
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Polynom other = (Polynom) obj;
+        @SuppressWarnings("unchecked")
+        Polynom<C> other = (Polynom<C>) obj;
         if (monome == null) {
             if (other.monome != null)
                 return false;

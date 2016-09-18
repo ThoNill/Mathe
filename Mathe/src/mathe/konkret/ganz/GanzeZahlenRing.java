@@ -7,6 +7,8 @@ import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.Ring;
 
 public class GanzeZahlenRing extends GanzeZahlen implements Ring<BigInteger> {
+  
+    private static final long serialVersionUID = -6740426187175934635L;
     public static final GanzeZahlenRing RING = new GanzeZahlenRing();
 
     private GanzeZahlenRing() {

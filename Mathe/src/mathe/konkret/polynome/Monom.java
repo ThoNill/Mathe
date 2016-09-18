@@ -7,7 +7,7 @@ public class Monom implements Serializable {
 
     private static final long serialVersionUID = -6192092745800217969L;
 
-    int exponenten[];
+    int[] exponenten;
 
     public Monom(int[] exponenten) {
         this.exponenten = exponenten;

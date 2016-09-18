@@ -7,6 +7,8 @@ import mathe.strukturen.Ring;
 
 public class PolynomeMultiplikativeHalbgruppe<C extends Serializable> extends
         Polynome<C> implements Gruppe<Polynom<C>> {
+  
+    private static final long serialVersionUID = 6971858239996374510L;
     private final Polynom<C> einheit;
 
     public PolynomeMultiplikativeHalbgruppe(Ring<C> koeffRing,
@@ -41,7 +43,7 @@ public class PolynomeMultiplikativeHalbgruppe<C extends Serializable> extends
                 C aDiv = koeffRing.multStruktur().getLQuotient(ml.a, m.a);
 
                 Monom mDiv = monomBereich.getQuotient(ml.monom, m.monom);
-                CMonom cMonom = new CMonom<C>(aDiv, mDiv);
+                CMonom<C> cMonom = new CMonom<C>(aDiv, mDiv);
                 div.addElement(cMonom);
             }
         }

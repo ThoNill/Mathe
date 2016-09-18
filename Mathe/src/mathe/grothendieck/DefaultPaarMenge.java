@@ -6,6 +6,8 @@ import java.util.Iterator;
 public class DefaultPaarMenge<R extends Serializable> implements
         GrothendieckPaarMenge<R, GrothendieckPaar<R>> {
 
+    private static final long serialVersionUID = -984441718505046910L;
+
     @Override
     public GrothendieckPaar<R> neuesPaar(R li, R re) {
         return new GrothendieckPaar<R>(li, re);

@@ -8,6 +8,8 @@ import mathe.strukturen.Ring;
 public class PolynomeAdditiveGruppe<C extends Serializable> extends Polynome<C>
         implements Gruppe<Polynom<C>> {
 
+    private static final long serialVersionUID = -7337844137304878222L;
+
     public PolynomeAdditiveGruppe(Ring<C> koeffRing,
             MonomHalbgruppe monomBereich) {
         super(koeffRing, monomBereich);

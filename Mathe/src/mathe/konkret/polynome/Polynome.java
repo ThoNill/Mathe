@@ -8,6 +8,8 @@ import mathe.strukturen.Menge;
 import mathe.strukturen.Ring;
 
 public class Polynome<C extends Serializable> implements Menge<Polynom<C>> {
+   
+    private static final long serialVersionUID = -4872172587368856182L;
     protected Ring<C> koeffRing;
     protected MonomHalbgruppe monomBereich;
     protected MonomOrdnung ordnung = new LexOrdnung();

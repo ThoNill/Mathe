@@ -6,6 +6,8 @@ import java.util.Iterator;
 import mathe.strukturen.Menge;
 
 public class NatürlicheZahlen implements Menge<BigInteger> {
+   
+    private static final long serialVersionUID = 7274829819967961608L;
     public static final NatürlicheZahlen MENGE = new NatürlicheZahlen();
 
     NatürlicheZahlen() {
