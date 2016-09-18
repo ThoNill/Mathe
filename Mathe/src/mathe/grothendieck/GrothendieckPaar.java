@@ -2,7 +2,7 @@ package mathe.grothendieck;
 
 import java.io.Serializable;
 
-public class GrothendieckPaar<K  extends Serializable> implements Serializable{
+public class GrothendieckPaar<K extends Serializable> implements Serializable {
     public K li;
     public K re;
 

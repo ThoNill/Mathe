@@ -7,7 +7,7 @@ public class RangOrdnung extends LexOrdnung {
         if (o1.exponenten.length != o2.exponenten.length) {
             throw new IllegalArgumentException("unvergleichbare Monome");
         }
-        int dim = o1.exponenten.length;
+
         int ro1 = calculateRang(o1);
         int ro2 = calculateRang(o2);
 

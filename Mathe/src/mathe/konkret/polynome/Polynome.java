@@ -7,7 +7,7 @@ import java.util.List;
 import mathe.strukturen.Menge;
 import mathe.strukturen.Ring;
 
-public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
+public class Polynome<C extends Serializable> implements Menge<Polynom<C>> {
     protected Ring<C> koeffRing;
     protected MonomHalbgruppe monomBereich;
     protected MonomOrdnung ordnung = new LexOrdnung();
@@ -65,7 +65,7 @@ public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
             }
         }
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         buffer.append(koeffizient);
         buffer.append(" ");
         buffer.append(monom);
@@ -76,7 +76,7 @@ public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
     @Override
     public String toString(Polynom<C> p) {
         sortieren(p);
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         for (int i = 0; i < p.size(); i++) {
             buffer.append(toString(p.get(i), i));
         }
@@ -89,7 +89,7 @@ public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
     }
 
     public String toString(List<Polynom<C>> l) {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         int i = 0;
         for (Polynom<C> m : l) {
             buffer.append("p[");
@@ -161,7 +161,6 @@ public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
         if (!koeffRing.istGleich(koeffRing.getNull(), m.a)) {
             reduziert.addElement(m);
         }
-        ;
     }
 
     protected void erweitern(Polynom<C> l, Polynom<C> summe) {
@@ -175,9 +174,6 @@ public class Polynome<C  extends Serializable> implements Menge<Polynom<C>> {
         if (p.size() == 1) {
             return koeffRing.istGleich(koeffRing.getNull(), p.get(0).a);
         }
-        if (p.size() == 0) {
-            return true;
-        }
-        return false;
+        return p.isEmpty();
     }
 }

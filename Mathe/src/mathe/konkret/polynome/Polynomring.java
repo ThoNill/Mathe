@@ -1,12 +1,17 @@
 package mathe.konkret.polynome;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import mathe.strukturen.Gruppe;
 import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.Ring;
 
-public class Polynomring<C extends Serializable> extends Polynome<C> implements Ring<Polynom<C>> {
+public class Polynomring<C extends Serializable> extends Polynome<C> implements
+        Ring<Polynom<C>> {
+    private static final Logger LOG = Logger.getLogger(Polynomring.class
+            .getName());
+
     PolynomeMultiplikativeHalbgruppe<C> multStruktur;
     Gruppe<Polynom<C>> addStruktur;
 
@@ -41,7 +46,6 @@ public class Polynomring<C extends Serializable> extends Polynome<C> implements 
             if (monomBereich.hatQuotient(p.get(ti).monom, monom)) {
                 return ti;
             }
-            ;
         }
         return 0;
     }
@@ -55,7 +59,7 @@ public class Polynomring<C extends Serializable> extends Polynome<C> implements 
 
         int ti = indexZumTeilen(rest, maxMonom.monom);
 
-        while (rest.size() > 0
+        while (!rest.isEmpty()
                 && ti < rest.size()
                 && monomBereich.hatQuotient(rest.get(ti).monom, maxMonom.monom)
                 && koeffRing.multStruktur().hatLQuotient(rest.get(ti).a,
@@ -86,12 +90,12 @@ public class Polynomring<C extends Serializable> extends Polynome<C> implements 
         sortieren(testVergleich);
         if (!l.equals(testVergleich)) {
 
-            System.out.println(toString(l));
-            System.out.println(toString(testVergleich));
-            System.out.println("div= " + toString(div));
-            System.out.println("rest= " + toString(rest));
+            LOG.finest(toString(l));
+            LOG.finest(toString(testVergleich));
+            LOG.finest("div= " + toString(div));
+            LOG.finest("rest= " + toString(rest));
 
-            throw new RuntimeException("Mult/Div ");
+            throw new ArithmeticException("Mult/Div ");
         }
     }
 

@@ -8,8 +8,8 @@ import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.Körper;
 import mathe.strukturen.Ring;
 
-public class Quotientenkörper<R  extends Serializable, GP extends GrothendieckPaar<R>> implements
-        Körper<GP>, GrothendieckPaarMenge<R, GP> {
+public class Quotientenkörper<R extends Serializable, GP extends GrothendieckPaar<R>>
+        implements Körper<GP>, GrothendieckPaarMenge<R, GP> {
     Ring<R> ring;
     GrothendieckGruppe<R, GP> multStruktur = null;
     QuotientenkörperAdditiveStruktur<R, GP> additiveStruktur;

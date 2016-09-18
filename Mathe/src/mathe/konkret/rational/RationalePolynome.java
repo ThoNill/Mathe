@@ -8,6 +8,10 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import mathe.konkret.polynome.MonomHalbgruppe;
+import mathe.konkret.polynome.Polynom;
+import mathe.konkret.polynome.Polynomring;
+
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -19,16 +23,14 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 import polynom.PolynomReaderLexer;
 import polynom.PolynomReaderParser;
-import mathe.konkret.polynome.MonomHalbgruppe;
-import mathe.konkret.polynome.Polynom;
-import mathe.konkret.polynome.Polynomring;
 
 public class RationalePolynome extends Polynomring<RationaleZahl> implements
         ANTLRErrorListener {
-    public static final Logger LOG = Logger.getLogger(RationalePolynome.class.getName());
+    private static final Logger LOG = Logger.getLogger(RationalePolynome.class
+            .getName());
 
     private MonomHalbgruppe monomBereich;
-    private Vector<String> parserErrors;
+    private List<String> parserErrors;
 
     public RationalePolynome(MonomHalbgruppe monomBereich) {
         super(RationaleZahlen.Q, monomBereich);
@@ -58,7 +60,7 @@ public class RationalePolynome extends Polynomring<RationaleZahl> implements
 
             return listener.getPolynom();
         } catch (IOException e) {
-            LOG.log(Level.SEVERE,"Ausnahme im getElement ",e);
+            LOG.log(Level.SEVERE, "Ausnahme im getElement ", e);
         }
 
         return null;
@@ -69,7 +71,7 @@ public class RationalePolynome extends Polynomring<RationaleZahl> implements
     }
 
     public void clearErrors() {
-        parserErrors.removeAllElements();
+        parserErrors.clear();
     }
 
     @Override

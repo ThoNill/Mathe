@@ -29,7 +29,7 @@ public class NatürlicheZahlenAdditiveHalbgruppe extends NatürlicheZahlen
         if (hatQuotient(r, re)) {
             return r.subtract(re);
         } else {
-            throw new RuntimeException("kann " + re + " nicht von " + r
+            throw new ArithmeticException("kann " + re + " nicht von " + r
                     + " abziehen");
         }
     }

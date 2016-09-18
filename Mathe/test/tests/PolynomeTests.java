@@ -15,7 +15,7 @@ import mathe.konkret.polynome.Polynome;
 import mathe.konkret.polynome.Polynomring;
 
 public class PolynomeTests {
-    public static final Logger LOG = Logger.getAnonymousLogger();
+    private static final Logger LOG = Logger.getAnonymousLogger();
 
     public PolynomeTests() {
     }

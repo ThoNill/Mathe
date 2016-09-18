@@ -9,15 +9,15 @@ import mathe.strukturen.Halbgruppe;
 import mathe.strukturen.KommutativesMagma;
 
 public class MonomHalbgruppe implements Halbgruppe<Monom>,
-        KommutativesMagma<Monom>, Serializable{
+        KommutativesMagma<Monom>, Serializable {
 
     private static final long serialVersionUID = -538130000480045952L;
 
-    static public final MonomHalbgruppe P2Z = new MonomHalbgruppe("p", "q", "r", "s",
-            "t", "u", "v", "w", "x", "y", "z");
+    static public final MonomHalbgruppe P2Z = new MonomHalbgruppe("p", "q",
+            "r", "s", "t", "u", "v", "w", "x", "y", "z");
 
-    String bezeichner[];
-    Monom eins;
+    String[] bezeichner;
+    private final Monom eins;
 
     public MonomHalbgruppe(String... bezeichner) {
         this.bezeichner = bezeichner;
@@ -41,7 +41,7 @@ public class MonomHalbgruppe implements Halbgruppe<Monom>,
 
     @Override
     public Monom op(Monom l, Monom r) {
-        int summe[] = new int[bezeichner.length];
+        int[] summe = new int[bezeichner.length];
         for (int i = 0; i < bezeichner.length; i++) {
             summe[i] = l.exponenten[i] + r.exponenten[i];
         }
@@ -50,8 +50,8 @@ public class MonomHalbgruppe implements Halbgruppe<Monom>,
 
     @Override
     public Monom getElement(String beschreibung) {
-        String werte[] = beschreibung.split(" +");
-        int m[] = new int[bezeichner.length];
+        String[] werte = beschreibung.split(" +");
+        int[]  m= new int[bezeichner.length];
         for (int i = 0; i < werte.length; i++) {
             m[i] = Integer.parseInt(werte[i]);
         }
@@ -100,7 +100,7 @@ public class MonomHalbgruppe implements Halbgruppe<Monom>,
 
     @Override
     public String toString(Monom m) {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         for (int i = 0; i < bezeichner.length; i++) {
             if (m.exponenten[i] > 0) {
                 buffer.append(bezeichner[i]);

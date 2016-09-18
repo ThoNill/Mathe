@@ -2,10 +2,10 @@ package mathe.konkret.polynome;
 
 import java.io.Serializable;
 
-public class CMonom<C  extends Serializable> implements Serializable{
-  
+public class CMonom<C extends Serializable> implements Serializable {
+
     private static final long serialVersionUID = -7336686871223712490L;
-    
+
     C a; // Koeffizient;
     Monom monom;
 

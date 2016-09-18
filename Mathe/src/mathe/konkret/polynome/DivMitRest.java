@@ -2,7 +2,7 @@ package mathe.konkret.polynome;
 
 import java.io.Serializable;
 
-public class DivMitRest<C  extends Serializable> {
+public class DivMitRest<C extends Serializable> {
     public Polynom<C> div;
     public Polynom<C> rest;
 

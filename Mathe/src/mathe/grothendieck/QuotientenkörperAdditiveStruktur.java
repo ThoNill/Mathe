@@ -6,7 +6,7 @@ import java.util.Iterator;
 import mathe.strukturen.Gruppe;
 import mathe.strukturen.Ring;
 
-public class QuotientenkörperAdditiveStruktur<R  extends Serializable, GP extends GrothendieckPaar<R>>
+public class QuotientenkörperAdditiveStruktur<R extends Serializable, GP extends GrothendieckPaar<R>>
         implements Gruppe<GP> {
     Ring<R> ring;
     GrothendieckPaarMenge<R, GP> paarMenge;

@@ -1,10 +1,14 @@
 package mathe.konkret.polynome;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+import java.util.logging.Logger;
 
-public class GröbnerBasisAlgo<C  extends Serializable> {
+public class GröbnerBasisAlgo<C extends Serializable> {
+    private static final Logger LOG = Logger.getLogger(GröbnerBasisAlgo.class
+            .getName());
+
     Polynomring<C> ring;
 
     public GröbnerBasisAlgo(Polynomring<C> ring) {
@@ -14,22 +18,17 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
 
     private SMonome calculateSMonom(Monom p, Monom q) {
         Monom max = Monom.max(p, q);
-        // System.out.println("max = " + ring.toString(max));
+        LOG.finest("max = " + ring.toString(max));
 
         Monom a = Monom.div(max, p);
         Monom b = Monom.div(max, q);
-        // System.out.println("ma= " + ring.toString(a));
-        // System.out.println("mb= " + ring.toString(b));
+        LOG.finest("ma= " + ring.toString(a));
+        LOG.finest("mb= " + ring.toString(b));
         return new SMonome(a, b);
     }
 
     private SCMonome<C> calculateSCMonom(CMonom<C> p, CMonom<C> q) {
         SMonome sMonome = calculateSMonom(p.monom, q.monom);
-        /*
-         * C ggt = ring.koeffRing.ggt(q.a,p.a); C qa =
-         * ring.koeffRing.multStruktur().getLQuotient(q.a,ggt); C pa =
-         * ring.koeffRing.multStruktur().getLQuotient(p.a,ggt);
-         */
         C pa = ring.koeffRing.getInverse(q.a);
         C qa = ring.koeffRing.getInverse(p.a);
         CMonom<C> ca = new CMonom<C>(qa, sMonome.a);
@@ -42,8 +41,8 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
         ring.sortieren(b);
         SCMonome<C> sMonom = calculateSCMonom(a.get(0), b.get(0));
 
-        // System.out.println("ma = " + ring.toString(sMonom.a));
-        // System.out.println("mb = " + ring.toString(sMonom.b));
+        LOG.finest("ma = " + ring.toString(sMonom.a));
+        LOG.finest("mb = " + ring.toString(sMonom.b));
 
         Polynom<C> polyZuA = new Polynom<>();
         polyZuA.addElement(sMonom.a);
@@ -57,23 +56,23 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
         CMonom<C> mb = sPolynomB.get(0);
 
         if (!ma.monom.equals(mb.monom)) {
-            throw new RuntimeException("Falsch!");
+            throw new ArithmeticException("Koeffizienten müssen gleich sein");
         }
 
         sPolynom = normieren(ring.reduzieren(sPolynom));
         if (sPolynom.hatMonom(mb.monom)) {
-            throw new RuntimeException("hat Monom!");
+            throw new ArithmeticException("dieses Monom darf nicht vorkommen");
         }
 
         return sPolynom;
     }
 
     private Polynom<C> normieren(Polynom<C> p) {
-        if (p.size() == 0)
+        if (p.isEmpty())
             return p;
         ring.sortieren(p);
 
-        // System.out.println("vor Normierung = " + ring.toString(p));
+        LOG.finest("vor Normierung = " + ring.toString(p));
 
         Polynom<C> np = new Polynom<>();
         C mFirst = ring.koeffRing.getInverse(p.get(0).a);
@@ -81,7 +80,7 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
             np.addElement(new CMonom<C>(ring.koeffRing.mult(mFirst, m.a),
                     m.monom));
         }
-        // System.out.println("nach Normierung = " + ring.toString(np));
+        LOG.finest("nach Normierung = " + ring.toString(np));
         return np;
     }
 
@@ -107,7 +106,7 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
     }
 
     public List<Polynom<C>> reduziereDieBasis(List<Polynom<C>> gröbnerBasis) {
-        List<Polynom<C>> reduzierteBasis = new Vector<>();
+        List<Polynom<C>> reduzierteBasis = new ArrayList<>();
         for (Polynom<C> teiler : gröbnerBasis) {
             Polynom<C> rest = restBestimmen(teiler, gröbnerBasis, teiler);
             if (!ring.isNullPolynom(rest)) {
@@ -118,44 +117,43 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
     }
 
     public List<Polynom<C>> gröbner(List<Polynom<C>> basis) {
-        List<Polynom<C>> gröbnerBasis = new Vector<>();
+        List<Polynom<C>> gröbnerBasis = new ArrayList<>();
         gröbnerBasis.addAll(basis);
 
-        List<Polynom<C>> neueBasen = new Vector<>();
+        List<Polynom<C>> neueBasen = new ArrayList<>();
         List<Polynom<C>> ergänzteBasen = basis;
 
-        // System.out.println("neu = " + ring.toString(neueBasen));
-        // System.out.println("ergänzt =\n" + ring.toString(ergänzteBasen));
+        LOG.finest("neu = " + ring.toString(neueBasen));
+        LOG.finest("ergänzt =\n" + ring.toString(ergänzteBasen));
 
         do {
-            neueBasen = new Vector<Polynom<C>>();
+            neueBasen = new ArrayList<Polynom<C>>();
             ring.sortieren(gröbnerBasis);
 
             for (Polynom<C> p1 : gröbnerBasis) {
 
                 for (Polynom<C> p2 : ergänzteBasen) {
-                    // System.out.println("p1=" + ring.toString(p1));
-                    // System.out.println("p2=" + ring.toString(p2));
+                    LOG.finest("p1=" + ring.toString(p1));
+                    LOG.finest("p2=" + ring.toString(p2));
 
                     if (!p1.equals(p2)) {
 
                         Polynom<C> sPolynom = calculateSPolynom(p1, p2);
 
-                        List<Polynom<C>> gBasis = new Vector<>();
+                        List<Polynom<C>> gBasis = new ArrayList<>();
                         gBasis.addAll(gröbnerBasis);
                         gBasis.addAll(neueBasen);
                         ring.sortieren(gBasis);
 
-                        // Polynom<C> rest = restBestimmen(sPolynom, gBasis);
                         sPolynom = restBestimmen(sPolynom, gBasis);
                         sPolynom = normieren(sPolynom);
 
-                        if (!ring.isNullPolynom(sPolynom)) {
-                            if (!(gröbnerBasis.contains(sPolynom) || neueBasen
-                                    .contains(sPolynom))) {
-                                neueBasen.add(sPolynom);
-                                ring.sortieren(neueBasen);
-                            }
+                        if (!ring.isNullPolynom(sPolynom)
+                                && !(gröbnerBasis.contains(sPolynom) || neueBasen
+                                        .contains(sPolynom))) {
+                            neueBasen.add(sPolynom);
+                            ring.sortieren(neueBasen);
+
                         }
                     }
                 }
@@ -164,7 +162,7 @@ public class GröbnerBasisAlgo<C  extends Serializable> {
 
             gröbnerBasis.addAll(neueBasen);
             ergänzteBasen = neueBasen;
-        } while (neueBasen.size() > 0);
+        } while (!neueBasen.isEmpty());
 
         ring.sortieren(gröbnerBasis);
         gröbnerBasis = reduziereDieBasis(gröbnerBasis);
@@ -183,7 +181,7 @@ class SMonome {
     }
 }
 
-class SCMonome<C  extends Serializable> {
+class SCMonome<C extends Serializable> {
     CMonom<C> a;
     CMonom<C> b;
 

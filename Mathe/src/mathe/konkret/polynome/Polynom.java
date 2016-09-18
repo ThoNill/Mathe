@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class Polynom<C  extends Serializable> implements Iterable<CMonom<C>>, Serializable {
+public class Polynom<C extends Serializable> implements Iterable<CMonom<C>>,
+        Serializable {
     private static final long serialVersionUID = 4911045316571765352L;
-    
+
     Vector<CMonom<C>> monome;
 
     public Polynom() {
@@ -97,7 +98,7 @@ public class Polynom<C  extends Serializable> implements Iterable<CMonom<C>>, Se
     }
 
     public boolean isEmpty() {
-        return monome.size() == 0;
+        return monome.isEmpty();
     }
 
     public boolean hatMonom(Monom m) {

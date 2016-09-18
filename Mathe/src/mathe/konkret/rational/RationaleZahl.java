@@ -5,6 +5,8 @@ import java.math.BigInteger;
 import mathe.grothendieck.GrothendieckPaar;
 
 public class RationaleZahl extends GrothendieckPaar<BigInteger> {
+
+    private static final long serialVersionUID = -7066984774133488051L;
     private int hashCode;
 
     public RationaleZahl(BigInteger li, BigInteger re) {
@@ -24,7 +26,7 @@ public class RationaleZahl extends GrothendieckPaar<BigInteger> {
 
     private int calculateHashValue() {
         BigInteger bi = li.multiply(re);
-        return (bi.intValue());
+        return bi.intValue();
     }
 
     @Override

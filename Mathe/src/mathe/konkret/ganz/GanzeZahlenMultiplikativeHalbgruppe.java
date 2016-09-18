@@ -29,7 +29,7 @@ public class GanzeZahlenMultiplikativeHalbgruppe extends GanzeZahlen implements
         if (hatQuotient(r, re)) {
             return r.divide(re);
         } else {
-            throw new RuntimeException("kann " + r + " nicht durch " + re
+            throw new ArithmeticException("kann " + r + " nicht durch " + re
                     + " dividieren");
         }
     }

@@ -19,7 +19,7 @@ import mathe.konkret.rational.RationaleZahl;
 import mathe.konkret.rational.RationaleZahlen;
 
 public class GröbnerTests {
-    public static final Logger LOG = Logger.getAnonymousLogger();
+    private static final Logger LOG = Logger.getAnonymousLogger();
 
     public GröbnerTests() {
     }

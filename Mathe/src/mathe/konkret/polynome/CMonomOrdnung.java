@@ -3,9 +3,10 @@ package mathe.konkret.polynome;
 import java.io.Serializable;
 import java.util.Comparator;
 
-public class CMonomOrdnung<C  extends Serializable> implements Comparator<CMonom<C>>, Serializable {
+public class CMonomOrdnung<C extends Serializable> implements
+        Comparator<CMonom<C>>, Serializable {
     private static final long serialVersionUID = -3599735210342966540L;
-    
+
     MonomOrdnung ordnung;
 
     public CMonomOrdnung(MonomOrdnung ordnung) {

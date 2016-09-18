@@ -2,7 +2,7 @@ package mathe.strukturen;
 
 import java.io.Serializable;
 
-public interface MagmaMitEins<K  extends Serializable> extends Magma<K> {
+public interface MagmaMitEins<K extends Serializable> extends Magma<K> {
     K getEins();
 
     default boolean hatLInverse(K e) {

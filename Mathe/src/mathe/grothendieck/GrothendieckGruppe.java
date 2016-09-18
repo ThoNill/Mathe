@@ -6,8 +6,8 @@ import java.util.Iterator;
 import mathe.strukturen.Gruppe;
 import mathe.strukturen.Halbgruppe;
 
-public class GrothendieckGruppe<H  extends Serializable, GP extends GrothendieckPaar<H>> implements
-        Gruppe<GP>, GrothendieckPaarMenge<H, GP> {
+public class GrothendieckGruppe<H extends Serializable, GP extends GrothendieckPaar<H>>
+        implements Gruppe<GP>, GrothendieckPaarMenge<H, GP> {
     Halbgruppe<H> halbgruppe;
     GrothendieckPaarMenge<H, GP> paarMenge;
 

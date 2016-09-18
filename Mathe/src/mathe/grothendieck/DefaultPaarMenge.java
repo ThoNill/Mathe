@@ -3,7 +3,7 @@ package mathe.grothendieck;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public class DefaultPaarMenge<R  extends Serializable> implements
+public class DefaultPaarMenge<R extends Serializable> implements
         GrothendieckPaarMenge<R, GrothendieckPaar<R>> {
 
     @Override

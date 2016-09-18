@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Monom implements Serializable {
-  
+
     private static final long serialVersionUID = -6192092745800217969L;
-  
+
     int exponenten[];
 
     public Monom(int[] exponenten) {

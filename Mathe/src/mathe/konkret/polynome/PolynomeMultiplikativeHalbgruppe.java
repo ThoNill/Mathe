@@ -5,9 +5,9 @@ import java.io.Serializable;
 import mathe.strukturen.Gruppe;
 import mathe.strukturen.Ring;
 
-public class PolynomeMultiplikativeHalbgruppe<C  extends Serializable> extends Polynome<C> implements
-        Gruppe<Polynom<C>> {
-    public Polynom<C> einheit;
+public class PolynomeMultiplikativeHalbgruppe<C extends Serializable> extends
+        Polynome<C> implements Gruppe<Polynom<C>> {
+    private final Polynom<C> einheit;
 
     public PolynomeMultiplikativeHalbgruppe(Ring<C> koeffRing,
             MonomHalbgruppe monomBereich) {

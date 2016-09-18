@@ -23,7 +23,7 @@ import polynom.PolynomReaderLexer;
 import polynom.PolynomReaderParser;
 
 public class PolyRead {
-    public static final Logger LOG = Logger.getAnonymousLogger();
+    private static final Logger LOG = Logger.getAnonymousLogger();
             
 
     public PolyRead() {

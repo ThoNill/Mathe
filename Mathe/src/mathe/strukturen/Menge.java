@@ -3,7 +3,8 @@ package mathe.strukturen;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public interface Menge<T extends Serializable> extends Iterable<T> , Serializable {
+public interface Menge<T extends Serializable> extends Iterable<T>,
+        Serializable {
     default Iterator<T> elemente() {
         return iterator();
     }

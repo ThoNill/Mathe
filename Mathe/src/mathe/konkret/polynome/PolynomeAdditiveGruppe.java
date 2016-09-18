@@ -5,8 +5,8 @@ import java.io.Serializable;
 import mathe.strukturen.Gruppe;
 import mathe.strukturen.Ring;
 
-public class PolynomeAdditiveGruppe<C  extends Serializable> extends Polynome<C> implements
-        Gruppe<Polynom<C>> {
+public class PolynomeAdditiveGruppe<C extends Serializable> extends Polynome<C>
+        implements Gruppe<Polynom<C>> {
 
     public PolynomeAdditiveGruppe(Ring<C> koeffRing,
             MonomHalbgruppe monomBereich) {

@@ -2,7 +2,7 @@ package mathe.strukturen;
 
 import java.io.Serializable;
 
-public interface KommutativesMagma<K  extends Serializable> extends Magma<K> {
+public interface KommutativesMagma<K extends Serializable> extends Magma<K> {
 
     boolean hatQuotient(K r, K re);
 

@@ -6,13 +6,15 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
 import mathe.konkret.polynome.GröbnerBasisAlgo;
 import mathe.konkret.polynome.MonomHalbgruppe;
 import mathe.konkret.polynome.Polynom;
@@ -35,7 +37,7 @@ public class GroebnerBasen extends JFrame {
     JButton beispiel1;
     JButton beispiel2;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new GroebnerBasen().setVisible(true);
     }
 
@@ -94,15 +96,15 @@ public class GroebnerBasen extends JFrame {
     }
 
     public void berechnen() {
-        String texte[] = eingabe.getText().split(";");
+        String[] texte = eingabe.getText().split(";");
         if (texte != null && texte.length > 0) {
-            ArrayList<Polynom<RationaleZahl>> basis = new ArrayList<>();
+            List<Polynom<RationaleZahl>> basis = new ArrayList<>();
             boolean fehlerFrei = true;
             for (String t : texte) {
                 if (fehlerFrei && !"".equals(t.trim())) {
                     basis.add(rp.getElement(t));
                     List<String> errors = rp.getErrors();
-                    if (errors.size() > 0) {
+                    if (!errors.isEmpty()) {
                         StringBuilder builder = new StringBuilder();
                         for (String et : errors) {
                             builder.append(et);
