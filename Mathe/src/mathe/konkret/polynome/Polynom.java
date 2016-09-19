@@ -1,17 +1,19 @@
 package mathe.konkret.polynome;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 public class Polynom<C extends Serializable> implements Iterable<CMonom<C>>,
         Serializable {
     private static final long serialVersionUID = 4911045316571765352L;
 
-    Vector<CMonom<C>> monome;
+    private ArrayList<CMonom<C>> monome;
 
     public Polynom() {
-        monome = new Vector<>();
+        monome = new ArrayList<CMonom<C>>();
     }
 
     public void trimToSize() {
@@ -19,19 +21,19 @@ public class Polynom<C extends Serializable> implements Iterable<CMonom<C>>,
     }
 
     public void removeElementAt(int index) {
-        monome.removeElementAt(index);
+        monome.remove(index);
     }
 
     public void addElement(CMonom<C> obj) {
-        monome.addElement(obj);
+        monome.add(obj);
     }
 
     public boolean removeElement(Object obj) {
-        return monome.removeElement(obj);
+        return monome.remove(obj);
     }
 
     public void removeAllElements() {
-        monome.removeAllElements();
+        monome.clear();
     }
 
     @Override
@@ -86,7 +88,7 @@ public class Polynom<C extends Serializable> implements Iterable<CMonom<C>>,
         return h;
     }
 
-    public boolean equalsList(Vector<CMonom<C>> a, Vector<CMonom<C>> b) {
+    public boolean equalsList(List<CMonom<C>> a, List<CMonom<C>> b) {
         if (a.size() != b.size()) {
             return false;
         }

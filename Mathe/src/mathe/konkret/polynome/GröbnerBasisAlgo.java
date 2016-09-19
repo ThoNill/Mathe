@@ -76,7 +76,7 @@ public class GröbnerBasisAlgo<C extends Serializable> {
 
         Polynom<C> np = new Polynom<>();
         C mFirst = ring.koeffRing.getInverse(p.get(0).a);
-        for (CMonom<C> m : p.monome) {
+        for (CMonom<C> m : p) {
             np.addElement(new CMonom<C>(ring.koeffRing.mult(mFirst, m.a),
                     m.monom));
         }
